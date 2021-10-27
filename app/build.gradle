@@ -116,6 +116,7 @@ dependencies {
     implementation config.ui.sdp
     implementation config.ui.materialDesign
     implementation config.ui.constraintLayout
+    implementation config.ui.shimmer
 
     //parsing
     implementation config.parser.gson

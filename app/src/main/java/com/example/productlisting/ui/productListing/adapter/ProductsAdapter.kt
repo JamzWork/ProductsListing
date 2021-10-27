@@ -31,9 +31,10 @@ class ProductsAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(mProduct: Product) {
             binding.tvTitle.text = mProduct.title
-            binding.tvTitle.isSingleLine = true
             binding.tvTitle.ellipsize = TextUtils.TruncateAt.END
             binding.tvDescription.text = mProduct.description
+            binding.tvRating.text = "${mProduct.rating.rate} (${mProduct.rating.count})"
+            binding.tvPriceTag.text = "Rs ${mProduct.price}"
 
             Glide.with(binding.root.context)
                 .load(mProduct.image)

@@ -4,14 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.productlisting.databinding.ProductListingBinding
 import com.example.productlisting.ui.base.fragment.BaseFragment
 import com.example.productlisting.ui.productListing.adapter.ProductsAdapter
 import com.example.productlisting.ui.productListing.viewModel.ProductListingViewModel
+import com.example.productlisting.utils.extensions.hide
+import com.example.productlisting.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
+import kotlinx.android.synthetic.main.loading_view.*
 
 @AndroidEntryPoint
 class ProductListingFragment : BaseFragment<ProductListingBinding>() {
@@ -35,19 +36,29 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
         productViewModel.productsListing.observe(viewLifecycleOwner, {
             it?.apply {
                 productsAdapter.submitList(it)
+                binding.rvList.show()
+                shimmerFrameLayout.stopShimmer()
+                shimmerFrameLayout.hide()
             }
         })
     }
 
     private fun setupRecyclerView() {
-        binding?.rvList?.layoutManager = LinearLayoutManager(
+        shimmerFrameLayout.startShimmer()
+        binding.rvList.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
             false
         )
-        binding?.rvList?.itemAnimator = null
+        binding.rvList.itemAnimator = null
         productsAdapter = ProductsAdapter()
-        binding?.rvList?.adapter = productsAdapter
+        binding.rvList.adapter = productsAdapter
+    }
+
+    override fun onPause() {
+        super.onPause()
+        shimmerFrameLayout.stopShimmer()
+        shimmerFrameLayout.hide()
     }
 
 }
