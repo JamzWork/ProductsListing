@@ -1,6 +1,6 @@
 package com.example.productlisting.data.repository.products.local
 
-class Products(
+data class Product(
     val id: Int,
     val title: String,
     val price: Double,

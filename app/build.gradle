@@ -13,7 +13,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.productlisting"
-        minSdkVersion 23
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -120,4 +120,8 @@ dependencies {
     //parsing
     implementation config.parser.gson
     implementation config.parser.jsoup
+
+    // Glide
+    implementation config.glide.glide
+    kapt config.glide.glideCompiler
 }

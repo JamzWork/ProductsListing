@@ -1,9 +1,8 @@
 package com.example.productlisting.data.repository.products.mapper
 
-import com.example.productlisting.data.repository.products.local.Products
+import com.example.productlisting.data.repository.products.local.Product
 import com.example.productlisting.data.repository.products.local.Rate
-import com.example.productlisting.data.repository.products.remote.response.ProductsDTO
-import com.example.productlisting.data.repository.products.remote.response.ProductsResponse
+import com.example.productlisting.data.repository.products.remote.response.ProductDTO
 import com.example.productlisting.data.repository.products.remote.response.RateDTO
 
 //fun transformAllProducts(productsResponse: ProductsResponse): List<Products> =
@@ -11,9 +10,9 @@ import com.example.productlisting.data.repository.products.remote.response.RateD
 //        transformProducts(this)
 //    }
 
-fun transformProducts(list: List<ProductsDTO>): List<Products> = list.run {
+fun transformProducts(list: List<ProductDTO>): List<Product> = list.run {
     this.map {
-        Products(
+        Product(
             id = it.id,
             title = it.title,
             price = it.price,
