@@ -26,7 +26,7 @@ class ProductListingViewModel @Inject constructor(
         getAllProducts()
     }
 
-    private fun getAllProducts()
+    fun getAllProducts()
     {
         viewModelScope.launch {
             val result = productsRepository.getProducts()

@@ -28,23 +28,41 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
         binding.viewmodel = productViewModel
         binding.fragment = this
         subscribeUiEvents(productViewModel)
+        setupViews()
+    }
+
+    private fun setupViews(){
         setupRecyclerView()
         subscribeToObservables()
+        binding.swipeRefresh.setOnRefreshListener {
+            binding.swipeRefresh.isRefreshing = false
+            showLoading()
+            productViewModel.getAllProducts()
+        }
     }
 
     private fun subscribeToObservables(){
         productViewModel.productsListing.observe(viewLifecycleOwner, {
             it?.apply {
                 productsAdapter.submitList(it)
-                binding.rvList.show()
-                shimmerFrameLayout.stopShimmer()
-                shimmerFrameLayout.hide()
+                showList()
             }
         })
     }
 
-    private fun setupRecyclerView() {
+    private fun showList(){
+        binding.rvList.show()
+        shimmerFrameLayout.stopShimmer()
+        shimmerFrameLayout.hide()
+    }
+
+    private fun showLoading(){
+        binding.rvList.hide()
+        shimmerFrameLayout.show()
         shimmerFrameLayout.startShimmer()
+    }
+
+    private fun setupRecyclerView() {
         binding.rvList.layoutManager = LinearLayoutManager(
             context,
             LinearLayoutManager.VERTICAL,
