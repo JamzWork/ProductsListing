@@ -2,6 +2,7 @@ package com.example.productlisting.ui.productListing
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,8 +25,8 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
     override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?) =
         ProductListingBinding.inflate(inflater, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         subscribeUiEvents(productViewModel)
         setupViews()
     }
