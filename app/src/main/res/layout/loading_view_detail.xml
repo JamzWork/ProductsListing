@@ -6,7 +6,7 @@
     android:layout_height="match_parent" >
 
     <com.facebook.shimmer.ShimmerFrameLayout
-        android:id="@+id/shimmerFrameLayout"
+        android:id="@+id/shimmerFrameLayoutDetail"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
@@ -21,27 +21,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/item_loading_product" />
+            <include layout="@layout/item_loading_product_detail" />
+            <include layout="@layout/item_loading_product_detail" />
+            <include layout="@layout/item_loading_product_detail" />
+            <include layout="@layout/item_loading_product_detail" />
+            <include layout="@layout/item_loading_product_detail" />
 
-            <include layout="@layout/item_loading_product" />
 
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
-
-            <include layout="@layout/item_loading_product" />
 
 
         </LinearLayout>

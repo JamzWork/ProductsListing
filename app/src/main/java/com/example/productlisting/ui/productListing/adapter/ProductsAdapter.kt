@@ -39,7 +39,7 @@ class ProductsAdapter(private val mProductClickListener: ProductClickListener) :
 
             Glide.with(binding.root.context)
                 .load(mProduct.image)
-                .into(binding.ivPicture)
+                .into(binding.ivProductPicture)
 
             binding.clView.setOnClickListener{
                 mProductClickListener.onClick(mProduct)

@@ -1,4 +1,5 @@
 <resources>
-    <string name="app_name">Airlift Store</string>
+    <string name="app_name">AirStore</string>
     <string name="button_view">View</string>
+    <string name="h_product_Details">Product Details</string>
 </resources>

@@ -13,7 +13,7 @@
         android:paddingBottom="@dimen/_10sdp" >
 
         <ImageView
-            android:id="@+id/ivPicture"
+            android:id="@+id/ivProductPicture"
             android:layout_width="@dimen/_70sdp"
             android:layout_height="@dimen/_70sdp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -25,11 +25,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginLeft="@dimen/_7sdp"
-            app:layout_constraintBottom_toBottomOf="@+id/ivPicture"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProductPicture"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginRight="@dimen/_10sdp"
-            app:layout_constraintStart_toEndOf="@+id/ivPicture"
-            app:layout_constraintTop_toTopOf="@+id/ivPicture">
+            app:layout_constraintStart_toEndOf="@+id/ivProductPicture"
+            app:layout_constraintTop_toTopOf="@+id/ivProductPicture">
 
             <TextView
                 android:id="@+id/tv_title"
