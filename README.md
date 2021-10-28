@@ -11,3 +11,11 @@ Module name | data | di | ui | utils
 Type | Kotlin | Kotlin | Kotlin | Kotlin  
 --- | --- | --- | --- | 
 Description | Repositories, consists of remote API's models ans service | Retrofit Module | MVVM Architecture that communicates with data module | Helper modules, constants & extensions
+
+
+| Module name        | Type           | Description  |
+| ------------- |:-------------:| -----:|
+| data      | Kotlin |  |
+| di      | Kotlin      |    |
+| ui | Kotlin      |      |
+| utils | Kotlin |      |
