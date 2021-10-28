@@ -6,16 +6,9 @@ https://user-images.githubusercontent.com/44348238/139268652-606e7201-c784-4e25-
 
 # Module Design
 
-Module name | data | di | ui | utils  
---- | --- | --- | --- | 
-Type | Kotlin | Kotlin | Kotlin | Kotlin  
---- | --- | --- | --- | 
-Description | Repositories, consists of remote API's models ans service | Retrofit Module | MVVM Architecture that communicates with data module | Helper modules, constants & extensions
-
-
 | Module name        | Type           | Description  |
 | ------------- |:-------------:| -----:|
-| data      | Kotlin |  |
-| di      | Kotlin      |    |
-| ui | Kotlin      |      |
-| utils | Kotlin |      |
+| data      | Kotlin | Repositories, consists of remote API's models ans service |
+| di      | Kotlin      |  Retrofit Module  |
+| ui | Kotlin      |  MVVM Architecture that communicates with data module   |
+| utils | Kotlin | Helper modules, constants & extensions |
