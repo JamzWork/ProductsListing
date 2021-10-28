@@ -34,7 +34,6 @@ https://fakestoreapi.com/products/1
 #### Dagger - Hilt
 #### Shimmer
 #### Glide
-#### databinding
 #### TextSize ssp,sdp
 #### jsoup, gson
 
