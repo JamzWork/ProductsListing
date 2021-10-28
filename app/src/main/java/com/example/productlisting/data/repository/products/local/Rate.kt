@@ -1,6 +1,6 @@
 package com.example.productlisting.data.repository.products.local
 
-class Rate(
+data class Rate(
     val rate: Double,
     val count: Int,
 )

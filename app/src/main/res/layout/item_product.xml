@@ -115,7 +115,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/cl_view"
-            android:layout_width="@dimen/_50sdp"
+            android:layout_width="@dimen/_55sdp"
             android:layout_height="@dimen/_20sdp"
             android:background="@drawable/bg_filled_blue"
             app:layout_constraintBottom_toBottomOf="parent"

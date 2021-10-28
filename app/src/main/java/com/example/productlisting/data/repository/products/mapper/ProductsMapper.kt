@@ -5,11 +5,6 @@ import com.example.productlisting.data.repository.products.local.Rate
 import com.example.productlisting.data.repository.products.remote.response.ProductDTO
 import com.example.productlisting.data.repository.products.remote.response.RateDTO
 
-//fun transformAllProducts(productsResponse: ProductsResponse): List<Products> =
-//    productsResponse.products.run {
-//        transformProducts(this)
-//    }
-
 fun transformProducts(list: List<ProductDTO>): List<Product> = list.run {
     this.map {
         Product(
@@ -30,3 +25,16 @@ fun transformRate(rateDTO: RateDTO): Rate = rateDTO.run  {
         rate =  rateDTO.rate
     )
 }
+
+fun transformProduct(productDTO: ProductDTO): Product = productDTO.run  {
+    Product(
+        id = this.id,
+        title = this.title,
+        price = this.price,
+        description = this.description,
+        category = this.category,
+        image = this.image,
+        rating = transformRate(this.rating)
+    )
+}
+

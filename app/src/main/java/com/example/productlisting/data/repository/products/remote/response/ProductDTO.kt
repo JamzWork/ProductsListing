@@ -3,7 +3,7 @@ package com.example.productlisting.data.repository.products.remote.response
 import com.google.gson.annotations.SerializedName
 
 class ProductDTO(
-    @SerializedName(value = "Id")
+    @SerializedName(value = "id")
     val id: Int,
 
     @SerializedName(value = "title")

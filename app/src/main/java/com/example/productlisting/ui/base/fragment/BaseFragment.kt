@@ -15,13 +15,11 @@ import com.example.productlisting.applicationEntry.ApplicationEntry
 import com.example.productlisting.ui.base.viewModel.BaseViewModel
 import com.example.productlisting.utils.event.EventUtilFunctions
 import com.example.productlisting.utils.event.UiEvent
-import com.squareup.otto.Bus
 
 abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
 
     protected lateinit var application: ApplicationEntry
     protected var isBusRegistered: Boolean = false
-    protected lateinit var bus: Bus
     protected lateinit var activity: Activity
     var hasInitializedRootView = false
     private var scrollView: ScrollView? = null
@@ -38,8 +36,6 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         application = activity.application as ApplicationEntry
-        bus = application.bus
-        bus.register(this)
         isBusRegistered = true
     }
 
@@ -62,7 +58,6 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         if (isBusRegistered) {
-            bus.unregister(this)
             isBusRegistered = false
         }
     }

@@ -1,6 +1,5 @@
 package com.example.productlisting.di
 
-import com.example.productlisting.utils.security.tls.TLS
 import com.example.productlisting.BuildConfig
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
@@ -31,7 +30,6 @@ object RetrofitModule {
     @Singleton
     fun provideOkHttpClient(
         loggingInterceptor: HttpLoggingInterceptor,
-        tls: TLS
     ): OkHttpClient {
         val builder = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
@@ -48,10 +46,6 @@ object RetrofitModule {
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .cache(null)
-        if (BuildConfig.IS_TLS_ENABLED) {
-            val tlsConfig = tls.getConfig()
-            builder.sslSocketFactory(tlsConfig.first, tlsConfig.second)
-        }
 
         return builder.build()
 

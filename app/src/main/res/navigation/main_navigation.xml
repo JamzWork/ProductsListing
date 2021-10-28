@@ -7,6 +7,23 @@
     <fragment
         android:id="@+id/productListingFragment"
         android:name="com.example.productlisting.ui.productListing.ProductListingFragment"
-        android:label="ProductListingFragment" />
+        android:label="ProductListingFragment" >
+        <action
+            android:id="@+id/action_productListingFragment_to_productDetailsFragment"
+            app:destination="@id/productDetailsFragment" >
+            <argument android:name="bundle_product_id"
+                app:argType="integer"
+                app:nullable="false"/>
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.example.productlisting.ui.productDetails.ProductDetailsFragment"
+        android:label="ProductDetailsFragment" >
+        <argument android:name="bundle_product_id"
+            app:argType="integer"
+            app:nullable="false"/>
+    </fragment>
 
 </navigation>

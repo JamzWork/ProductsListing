@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.productlisting.data.repository.products.local.Product
 import com.example.productlisting.databinding.ProductListingBinding
 import com.example.productlisting.ui.base.fragment.BaseFragment
 import com.example.productlisting.ui.productListing.adapter.ProductsAdapter
+import com.example.productlisting.ui.productListing.clickListeners.ProductClickListener
 import com.example.productlisting.ui.productListing.viewModel.ProductListingViewModel
 import com.example.productlisting.utils.extensions.hide
 import com.example.productlisting.utils.extensions.show
@@ -69,7 +71,11 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
             false
         )
         binding.rvList.itemAnimator = null
-        productsAdapter = ProductsAdapter()
+        productsAdapter = ProductsAdapter(object : ProductClickListener {
+            override fun onClick(product: Product) {
+                 navigateByDirections(ProductListingFragmentDirections.actionProductListingFragmentToProductDetailsFragment(product.id))
+            }
+        })
         binding.rvList.adapter = productsAdapter
     }
 

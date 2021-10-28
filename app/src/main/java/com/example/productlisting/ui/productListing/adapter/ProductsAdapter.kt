@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.productlisting.data.repository.products.local.Product
 import com.example.productlisting.databinding.ItemProductBinding
+import com.example.productlisting.ui.productListing.clickListeners.ProductClickListener
 
-class ProductsAdapter :
+class ProductsAdapter(private val mProductClickListener: ProductClickListener) :
     ListAdapter<Product, ProductsAdapter.ProductsViewHolder>(
         ProductItemDiffCallback()
     ) {
@@ -39,6 +40,10 @@ class ProductsAdapter :
             Glide.with(binding.root.context)
                 .load(mProduct.image)
                 .into(binding.ivPicture)
+
+            binding.clView.setOnClickListener{
+                mProductClickListener.onClick(mProduct)
+            }
         }
     }
 
