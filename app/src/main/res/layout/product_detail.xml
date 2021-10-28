@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <data>
-        <variable
-            name="viewmodel"
-            type="com.example.productlisting.ui.productDetails.viewModel.ProductDetailsViewModel" />
-
-        <variable
-            name="fragment"
-            type="com.example.productlisting.ui.productDetails.ProductDetailsFragment" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"  >
 
         <include
-            android:id="@+id/item_header"
+            android:id="@+id/view_item_header"
             layout="@layout/item_header"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
+            android:id="@+id/view_loading_detail"
             layout="@layout/loading_view_detail"
             android:layout_height="wrap_content"
             android:layout_width="match_parent"
@@ -30,9 +22,10 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/header_height"
-            app:layout_constraintTop_toBottomOf="@+id/item_header"/>
+            app:layout_constraintTop_toBottomOf="@+id/view_item_header"/>
 
         <include
+            android:id="@+id/view_product_detail"
             layout="@layout/item_product_detail"
             android:layout_width="0dp"
             android:layout_height="0dp"
@@ -40,7 +33,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/item_header" />
+            app:layout_constraintTop_toBottomOf="@+id/view_item_header" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

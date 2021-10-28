@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android" >
-    <data>
-        <variable
-            name="viewmodel"
-            type="com.example.productlisting.ui.productListing.viewModel.ProductListingViewModel" />
 
-        <variable
-            name="fragment"
-            type="com.example.productlisting.ui.productListing.ProductListingFragment" />
-    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -23,7 +15,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <include
-            android:id="@+id/include"
+            android:id="@+id/view_loading_list"
             layout="@layout/loading_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

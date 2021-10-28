@@ -14,7 +14,6 @@ import com.example.productlisting.ui.productListing.viewModel.ProductListingView
 import com.example.productlisting.utils.extensions.hide
 import com.example.productlisting.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.loading_view.*
 
 @AndroidEntryPoint
 class ProductListingFragment : BaseFragment<ProductListingBinding>() {
@@ -27,8 +26,6 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        binding.viewmodel = productViewModel
-        binding.fragment = this
         subscribeUiEvents(productViewModel)
         setupViews()
     }
@@ -45,7 +42,7 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
 
     private fun subscribeToObservables(){
         productViewModel.productsListing.observe(viewLifecycleOwner, {
-            it?.apply {
+            it?.let {
                 productsAdapter.submitList(it)
                 showList()
             }
@@ -54,14 +51,14 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
 
     private fun showList(){
         binding.rvList.show()
-        shimmerFrameLayout.stopShimmer()
-        shimmerFrameLayout.hide()
+        binding.viewLoadingList.shimmerFrameLayout.stopShimmer()
+        binding.viewLoadingList.shimmerFrameLayout.hide()
     }
 
     private fun showLoading(){
         binding.rvList.hide()
-        shimmerFrameLayout.show()
-        shimmerFrameLayout.startShimmer()
+        binding.viewLoadingList.shimmerFrameLayout.show()
+        binding.viewLoadingList.shimmerFrameLayout.startShimmer()
     }
 
     private fun setupRecyclerView() {
@@ -81,8 +78,8 @@ class ProductListingFragment : BaseFragment<ProductListingBinding>() {
 
     override fun onPause() {
         super.onPause()
-        shimmerFrameLayout.stopShimmer()
-        shimmerFrameLayout.hide()
+        binding.viewLoadingList.shimmerFrameLayout.stopShimmer()
+        binding.viewLoadingList.shimmerFrameLayout.hide()
     }
 
 }

@@ -1,12 +1,9 @@
 package com.example.productlisting.ui.base.fragment
 
-import android.app.Activity
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
@@ -19,24 +16,14 @@ import com.example.productlisting.utils.event.UiEvent
 abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
 
     protected lateinit var application: ApplicationEntry
-    protected var isBusRegistered: Boolean = false
-    protected lateinit var activity: Activity
-    var hasInitializedRootView = false
-    private var scrollView: ScrollView? = null
 
     // data binding
     private lateinit var dataBinding: DB
     protected val binding get() = dataBinding
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        activity = (context as Activity)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        application = activity.application as ApplicationEntry
-        isBusRegistered = true
+        application = requireActivity().application as ApplicationEntry
     }
 
     override fun onCreateView(
@@ -54,13 +41,6 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     }
 
     protected abstract fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?): DB
-
-    override fun onDestroy() {
-        super.onDestroy()
-        if (isBusRegistered) {
-            isBusRegistered = false
-        }
-    }
 
     fun subscribeUiEvents(baseViewModel: BaseViewModel) {
         baseViewModel.uiEvents.observe(viewLifecycleOwner) {
@@ -80,7 +60,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     }
 
     fun showToast(message: String) {
-        EventUtilFunctions.showToast(message, activity)
+        EventUtilFunctions.showToast(message, requireContext())
     }
 
 
@@ -89,7 +69,7 @@ abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
     }
 
     open fun back() {
-        activity.onBackPressed()
+        requireActivity().onBackPressed()
     }
 
 }
