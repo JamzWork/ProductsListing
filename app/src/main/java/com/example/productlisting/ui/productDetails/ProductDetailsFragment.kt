@@ -2,6 +2,7 @@ package com.example.productlisting.ui.productDetails
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -13,8 +14,6 @@ import com.example.productlisting.ui.productDetails.viewModel.ProductDetailsView
 import com.example.productlisting.utils.extensions.hide
 import com.example.productlisting.utils.extensions.show
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.item_header.*
-import kotlinx.android.synthetic.main.item_product_detail.*
 import kotlinx.android.synthetic.main.loading_view_detail.shimmerFrameLayoutDetail
 
 @AndroidEntryPoint
@@ -25,33 +24,32 @@ class ProductDetailsFragment : BaseFragment<ProductDetailBinding>() {
     override fun getFragmentBinding(inflater: LayoutInflater, container: ViewGroup?) =
         ProductDetailBinding.inflate(inflater, container, false)
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        binding.viewmodel = productDetailsViewModel
-        binding.fragment = this
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         subscribeUiEvents(productDetailsViewModel)
         setupHeader()
         subscribeToObservables()
         showLoading()
     }
 
-    fun setupHeader(){
-        iv_back.show()
-        iv_back.setOnClickListener{
+    private fun setupHeader(){
+        binding.viewItemHeader.ivBack.show()
+        binding.viewItemHeader.ivBack.setOnClickListener{
             back()
         }
-        tv_header.text = resources.getText(R.string.h_product_Details)
+
+        binding.viewItemHeader.tvHeader.text = resources.getText(R.string.h_product_Details)
     }
 
     private fun setupViews(mProduct: Product){
-        tvtitle.text = "${mProduct.title}"
-        tvdescription.text = "${mProduct.description}"
-        tv_rating.text = "${mProduct.rating.rate} (${mProduct.rating.count})"
-        tv_price_tag.text = "Rs ${mProduct.price}"
+        binding.viewProductDetail.tvtitle.text = "${mProduct.title}"
+        binding.viewProductDetail.tvdescription.text = "${mProduct.description}"
+        binding.viewProductDetail.tvRating.text = "${mProduct.rating.rate} (${mProduct.rating.count})"
+        binding.viewProductDetail.tvPriceTag.text = "Rs ${mProduct.price}"
 
         Glide.with(binding.root.context)
             .load(mProduct.image)
-            .into(ivProductPicture)
+            .into(binding.viewProductDetail.ivProductPicture)
     }
 
     private fun subscribeToObservables(){
@@ -64,13 +62,13 @@ class ProductDetailsFragment : BaseFragment<ProductDetailBinding>() {
     }
 
     private fun showDetails(){
-        productDetailsView.show()
+        binding.viewProductDetail.productDetailsView.show()
         shimmerFrameLayoutDetail.stopShimmer()
         shimmerFrameLayoutDetail.hide()
     }
 
     private fun showLoading(){
-        productDetailsView.hide()
+        binding.viewProductDetail.productDetailsView.hide()
         shimmerFrameLayoutDetail.show()
         shimmerFrameLayoutDetail.startShimmer()
     }

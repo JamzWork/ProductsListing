@@ -17,7 +17,4 @@ abstract class BaseViewModel(application: Application) : AndroidViewModel(applic
         _uiEventsLiveData.value = Event(UiEvent.ShowToast(message))
     }
 
-    fun navigateByDirections(navDirections: NavDirections) {
-        _uiEventsLiveData.value = Event(UiEvent.NavigateByDirections(navDirections))
-    }
 }
