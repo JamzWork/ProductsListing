@@ -4,9 +4,9 @@ Multiple Product listing using API with its detail screen
 # Products List To Detail Screen
 https://user-images.githubusercontent.com/44348238/139268652-606e7201-c784-4e25-b169-07cc32aabd1b.mov
 
-# Module Design
+# App Architecture
 
-**Module name** | **Type** | **Description**
+**Name** | **Type** | **Description**
 --- | --- | ---
 app | Kotlin | MainActivity, ApplicationEntry, Theme, Hilt setup.
 data | Kotlin | Repositories, consists of remote API's models ans service
@@ -34,8 +34,6 @@ https://fakestoreapi.com/products/1
 #### Dagger - Hilt
 #### Shimmer
 #### Glide
-#### TextSize ssp,sdp
-#### jsoup, gson
 
 # Credits
 Thanks to [MohammadReza Keikavousi](https://keikaavousi.com/) for providing https://fakestoreapi.com/ API's for listing :)
