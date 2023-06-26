@@ -8,6 +8,7 @@ apply plugin: 'androidx.navigation.safeargs.kotlin'
 def config = rootProject.extensions.getByName("ext")
 
 android {
+
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
@@ -19,6 +20,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+      //  testInstrumentationRunner "com.example.productlisting.CustomTestRunner"
     }
 
     buildTypes {
@@ -109,4 +111,20 @@ dependencies {
     // Glide
     implementation config.glide.glide
     kapt config.glide.glideCompiler
+
+    // Tests
+
+    // For instrumented tests.
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.38.1")
+    // ...with Kotlin.
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.38.1")
+    // ...with Java.
+    androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:2.38.1")
+
+    androidTestImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    testImplementation "com.google.truth:truth:1.1.3"
+
 }

@@ -9,11 +9,11 @@ import com.example.productlisting.data.repository.products.mapper.transformProdu
 import com.example.productlisting.utils.Constants
 import javax.inject.Inject
 
-class ProductsRepository @Inject constructor(
+open class ProductsRepository @Inject constructor(
     private val productsRDS: ProductsRDS,
 ) : BaseRepository() {
 
-    suspend fun getProducts( ): Result<List<Product>> {
+    open suspend fun getProducts( ): Result<List<Product>> {
 
         val response = productsRDS.getProducts()
         return if (response is Result.Success) {
